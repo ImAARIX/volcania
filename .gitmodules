@@ -3,4 +3,4 @@
 	url = https://github.com/ImAARIX/tp-volcania-api.git
 [submodule "front"]
 	path = front
-	url = https://github.com/iselbouch1/volcano
+	url = git@github.com:iselbouch1/volcano
