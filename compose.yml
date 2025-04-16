@@ -1,0 +1,45 @@
+services:
+  front:
+    build:
+      context: ./front
+      dockerfile: Dockerfile
+    ports:
+      - "80:80/tcp"
+    networks:
+      - volcania
+    depends_on:
+      - back
+    container_name: "volcania_front"
+
+  back:
+    build:
+      context: ./back
+      dockerfile: Dockerfile
+    networks:
+      - volcania
+    depends_on:
+      - db
+    container_name: "volcania_back"
+
+  db:
+    image: mariadb:11.6.2
+    volumes:
+      - volcania-api_db:/data
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: volcania
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - "3306:3306"
+    networks:
+      - volcania
+    container_name: "volcania_db"
+
+networks:
+  volcania:
+      driver: bridge
+
+volumes:
+  volcania-api_db:
+    driver: local

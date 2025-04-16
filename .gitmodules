@@ -1,0 +1,6 @@
+[submodule "back"]
+	path = back
+	url = git@github.com:ImAARIX/tp-volcania-api.git
+[submodule "front"]
+	path = front
+	url = git@github.com:iselbouch1/volcano
